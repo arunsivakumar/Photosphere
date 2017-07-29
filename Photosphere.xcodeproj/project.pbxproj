@@ -19,6 +19,7 @@
 		408C53B21F2D0F87000E0214 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C53B11F2D0F87000E0214 /* Photo.swift */; };
 		408C53B41F2D46BE000E0214 /* PhotoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C53B31F2D46BE000E0214 /* PhotoDataSource.swift */; };
 		408C53B61F2D49E6000E0214 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C53B51F2D49E6000E0214 /* PhotoCollectionViewCell.swift */; };
+		408C53B81F2D5129000E0214 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C53B71F2D5129000E0214 /* ImageStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		408C53B11F2D0F87000E0214 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		408C53B31F2D46BE000E0214 /* PhotoDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDataSource.swift; sourceTree = "<group>"; };
 		408C53B51F2D49E6000E0214 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		408C53B71F2D5129000E0214 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				408C53B11F2D0F87000E0214 /* Photo.swift */,
 				408C53B31F2D46BE000E0214 /* PhotoDataSource.swift */,
 				408C53B51F2D49E6000E0214 /* PhotoCollectionViewCell.swift */,
+				408C53B71F2D5129000E0214 /* ImageStore.swift */,
 			);
 			path = Photosphere;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				408C53AC1F2CFBC1000E0214 /* FlickrAPI.swift in Sources */,
 				408C53801F2CF846000E0214 /* PhotosViewController.swift in Sources */,
 				408C53B01F2D0886000E0214 /* PhotoStore.swift in Sources */,
+				408C53B81F2D5129000E0214 /* ImageStore.swift in Sources */,
 				408C53B41F2D46BE000E0214 /* PhotoDataSource.swift in Sources */,
 				408C53B61F2D49E6000E0214 /* PhotoCollectionViewCell.swift in Sources */,
 				408C537E1F2CF846000E0214 /* AppDelegate.swift in Sources */,
