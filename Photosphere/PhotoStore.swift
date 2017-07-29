@@ -33,10 +33,14 @@ class PhotoStore{
             
             if let jsonData = data{
                 
-                if let jsonString = String(data:jsonData,
-                                           encoding: .utf8){
-                    print(jsonString)
+                do {
+                    let jsonObject = try JSONSerialization.jsonObject(with: jsonData,
+                                                                      options: [])
+                    print(jsonObject)
+                } catch let error {
+                    print("Error creating JSON object: \(error)")
                 }
+                
             }else if let requestError = error{
                 print("error fetching interesting photos: \(requestError)")
             }else{
