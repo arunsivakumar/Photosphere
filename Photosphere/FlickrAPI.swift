@@ -9,14 +9,44 @@
 import Foundation
 
 enum Method:String{
+    
     case interestingPhotos = "flickr.interestingness.getList"
+    
 }
 struct FlickrAPI{
+    
     private static let baseURLString = "https://api.flickr.com/service/rest"
+    private static let apiKey = "fd3c0d32acfaca425895462a4194ee13"
     
     
     private static func flickrURL(method:Method, parameters:[String:String]?) ->URL{
-        return URL(string:"")!
+        
+        var components = URLComponents(string:baseURLString)!
+        
+        var queryItems = [URLQueryItem]()
+        
+        let baseParams = [
+            "method": method.rawValue,
+            "format": "json",
+            "nojsoncallback": "1",
+            "api_key": apiKey
+        ]
+        
+        for (key, value) in baseParams {
+            let item = URLQueryItem(name: key, value: value)
+            queryItems.append(item)
+        }
+        
+        if let additionalParams = parameters{
+            for(key,value) in additionalParams{
+              let item = URLQueryItem(name: key, value: value)
+              queryItems.append(item)
+            }
+        }
+        
+        components.queryItems = queryItems
+        
+        return components.url!
     }
     
     
