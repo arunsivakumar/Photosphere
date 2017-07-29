@@ -10,7 +10,7 @@ import Foundation
 
 /**
     Flickr API Endpoint
-    - interestingPhotos: For fetching interesting photos
+    - interestingPhotos: For fetching interesting photos.
 */
 
 enum FlickrError: Error{
@@ -34,16 +34,16 @@ struct FlickrAPI{
     }()
     
     /**
-     Constructs Flickr URL
+     Constructs Flickr URL.
      
      - Parameters:
-        - method: Flickr API Endpoint
-        - parameters: Query items
+        - method: Flickr API Endpoint.
+        - parameters: Query items.
      
-     - Returns: URL constructed from method,base parameters and additional parameters
+     - Returns: URL constructed from method,base parameters and additional parameters.
      */
     
-    private static func flickrURL(method:Method, parameters:[String:String]?) ->URL{
+    private static func flickrURL(method:Method, parameters:[String:String]?) -> URL{
         
         var components = URLComponents(string:baseURLString)!
         
