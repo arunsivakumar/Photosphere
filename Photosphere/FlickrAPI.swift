@@ -8,16 +8,32 @@
 
 import Foundation
 
+/**
+    Flickr API Endpoint
+    - interestingPhotos: For fetching interesting photos
+*/
+
 enum Method:String{
     
     case interestingPhotos = "flickr.interestingness.getList"
     
 }
+
+/// A FlickrAPI constructor 
 struct FlickrAPI{
     
     private static let baseURLString = "https://api.flickr.com/service/rest"
     private static let apiKey = "fd3c0d32acfaca425895462a4194ee13"
     
+    /**
+     Constructs Flickr URL
+     
+     - Parameters:
+        - method: Flickr API Endpoint
+        - parameters: Query items
+     
+     - Returns: URL constructed from method,base parameters and additional parameters
+     */
     
     private static func flickrURL(method:Method, parameters:[String:String]?) ->URL{
         
@@ -50,6 +66,7 @@ struct FlickrAPI{
     }
     
     
+    /// Construct interestingPhotos URL
     static var interestingPhotosURL:URL{
         return flickrURL(method: .interestingPhotos, parameters: ["extras":"url_h,dateTaken"])
     }
