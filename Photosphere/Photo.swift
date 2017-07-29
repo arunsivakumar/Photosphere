@@ -43,3 +43,9 @@ class Photo {
     }
 }
 
+extension Photo: Equatable {
+    static func == (lhs: Photo, rhs: Photo) -> Bool {
+        // compare if the two photos arethe same
+        return lhs.photoID == rhs.photoID
+    }
+}
