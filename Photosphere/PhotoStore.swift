@@ -9,6 +9,11 @@
 import Foundation
 
 
+enum PhotosResult{
+    case success([Photo])
+    case failure(Error)
+}
+
 class PhotoStore{
 
     /// Holds a URLSession instance.
@@ -32,7 +37,7 @@ class PhotoStore{
             (data, response, error) -> Void in
             
             if let jsonData = data{
-                
+            
                 do {
                     let jsonObject = try JSONSerialization.jsonObject(with: jsonData,
                                                                       options: [])
@@ -50,6 +55,27 @@ class PhotoStore{
         }
         task.resume()
         
+    }
+    
+    static func photos(fromJSON data: Data) -> PhotosResult{
+        do{
+            let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+            
+            guard
+                let jsonDictionary = jsonObject as? [AnyHashable:Any],
+                let photos = jsonDictionary["photos"] as? [String:Any],
+                let photosArray = photos["photo"] as? [[String:Any]] else{
+                    
+                    // The JSON structure if not valid
+                    return .failure(FlickrError.invalidJSONData)
+            }
+            
+            var finalPhotos = [Photo]()
+            return .success(finalPhotos)
+            
+        }catch let error{
+            return .failure(error)
+        }
     }
     
 }
