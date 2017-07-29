@@ -14,6 +14,7 @@
 		408C53881F2CF846000E0214 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 408C53861F2CF846000E0214 /* LaunchScreen.storyboard */; };
 		408C53931F2CF846000E0214 /* PhotosphereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C53921F2CF846000E0214 /* PhotosphereTests.swift */; };
 		408C539E1F2CF846000E0214 /* PhotosphereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C539D1F2CF846000E0214 /* PhotosphereUITests.swift */; };
+		408C53AC1F2CFBC1000E0214 /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C53AB1F2CFBC1000E0214 /* FlickrAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		408C53991F2CF846000E0214 /* PhotosphereUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotosphereUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		408C539D1F2CF846000E0214 /* PhotosphereUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosphereUITests.swift; sourceTree = "<group>"; };
 		408C539F1F2CF846000E0214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		408C53AB1F2CFBC1000E0214 /* FlickrAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				408C53841F2CF846000E0214 /* Assets.xcassets */,
 				408C53861F2CF846000E0214 /* LaunchScreen.storyboard */,
 				408C53891F2CF846000E0214 /* Info.plist */,
+				408C53AB1F2CFBC1000E0214 /* FlickrAPI.swift */,
 			);
 			path = Photosphere;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				408C53AC1F2CFBC1000E0214 /* FlickrAPI.swift in Sources */,
 				408C53801F2CF846000E0214 /* PhotosViewController.swift in Sources */,
 				408C537E1F2CF846000E0214 /* AppDelegate.swift in Sources */,
 			);
