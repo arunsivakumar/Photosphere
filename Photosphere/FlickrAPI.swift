@@ -13,10 +13,12 @@ import Foundation
     - interestingPhotos: For fetching interesting photos
 */
 
+enum FlickrError: Error{
+    case invalidJSONData
+}
+
 enum Method:String{
-    
     case interestingPhotos = "flickr.interestingness.getList"
-    
 }
 
 /// A FlickrAPI constructor 
@@ -24,6 +26,12 @@ struct FlickrAPI{
     
     private static let baseURLString =  "https://api.flickr.com/services/rest"
     private static let apiKey = "fd3c0d32acfaca425895462a4194ee13"
+    
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-ss HH:mm:ss"
+        return formatter
+    }()
     
     /**
      Constructs Flickr URL
