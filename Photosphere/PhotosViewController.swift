@@ -9,6 +9,8 @@
 import UIKit
 
 class PhotosViewController: UIViewController {
+    
+    @IBOutlet var imageView:UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
