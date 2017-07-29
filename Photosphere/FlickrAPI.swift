@@ -22,7 +22,7 @@ enum Method:String{
 /// A FlickrAPI constructor 
 struct FlickrAPI{
     
-    private static let baseURLString = "https://api.flickr.com/service/rest"
+    private static let baseURLString =  "https://api.flickr.com/services/rest"
     private static let apiKey = "fd3c0d32acfaca425895462a4194ee13"
     
     /**
