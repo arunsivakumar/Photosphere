@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 /**
  
@@ -42,6 +43,17 @@ enum PhotosResult{
 class PhotoStore{
     
     let imageStore = ImageStore()
+    
+    private let persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Photosphere")
+        container.loadPersistentStores { (description, error) in
+            if let error = error {
+                print("Error setting up Core Data (\(error)).")
+            }
+        }
+        return container
+    }()
+
 
 
     /// Holds a URLSession instance.
@@ -67,12 +79,21 @@ class PhotoStore{
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in
             
-            let result = self.processPhotosRequest(data: data, error: error)
+//            let result = self.processPhotosRequest(data: data, error: error)
+            var result = self.processPhotosRequest(data: data, error: error)
+
+            // saving changes
+            if case .success(_) = result {
+                do {
+                    try self.persistentContainer.viewContext.save()
+                } catch {
+                    result = .failure(error)
+                }
+            }
+            
             OperationQueue.main.addOperation {
                 completion(result)
             }
-            
-            
         }
         task.resume()
         
@@ -83,7 +104,23 @@ class PhotoStore{
             return .failure(error!)
         }
         
-        return FlickrAPI.photos(fromJSON: jsonData)
+        return FlickrAPI.photos(fromJSON: jsonData, into: persistentContainer.viewContext)
+    }
+    
+    func fetchAllPhotos(completion: @escaping (PhotosResult) -> Void) {
+        let fetchRequest: NSFetchRequest<Photo> = Photo.fetchRequest()
+        let sortByDateTaken = NSSortDescriptor(key: #keyPath(Photo.dateTaken), ascending: true)
+        fetchRequest.sortDescriptors = [sortByDateTaken]
+        
+        let viewContext = persistentContainer.viewContext
+        viewContext.perform {
+            do {
+                let allPhotos = try viewContext.fetch(fetchRequest)
+                completion(.success(allPhotos))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
     
     
@@ -91,15 +128,19 @@ class PhotoStore{
         
         
         // cache images/retrive
-        let photoKey = photo.photoID
+        guard let photoKey = photo.photoID else{
+            preconditionFailure("photoexpected to have an ID")
+        }
         if let image = imageStore.image(forKey: photoKey) {
             OperationQueue.main.addOperation {
                 completion(.success(image))
             }
         }
         
-        let photoURL = photo.remoteURL
-        let request = URLRequest(url:photoURL)
+        guard let photoURL = photo.remoteURL else{
+            preconditionFailure("photoexpected to have remote URL")
+        }
+        let request = URLRequest(url:photoURL as URL)
         
         let task = session.dataTask(with: request){
             (data, response, error) -> Void in
